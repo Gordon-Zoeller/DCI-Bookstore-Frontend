@@ -15,15 +15,19 @@ function Books() {
     }, []);
     const searchBook = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:8000/api/books/search/${e.target.search.value}`)
-        .then(res => res.json())
-        .then(res => {
+        if(e.target.search.value !== "") {
+            fetch(`http://localhost:8000/api/books/search/${e.target.search.value}`)
+            .then(res => res.json())
+            .then(res => {
             if(res.success) {
                 setSingleBook(res.data);
                 navigate(`/books/${e.target.search.value}`);
-            };
+                e.target.search.value = "";
+            }
         })
         .catch(err => console.log(err));
+        };
+        e.target.search.value = "";
     };
     return (
         <>
