@@ -10,7 +10,6 @@ export default function HomePage() {
 
       <footer>
         <p>Contact Us: email@example.com</p>
-        <p>&copy; {new Date().getFullYear()} Our Online Bookstore</p>
       </footer>
     </div>
   );
