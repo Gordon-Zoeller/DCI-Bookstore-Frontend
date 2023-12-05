@@ -37,12 +37,14 @@ function OneBook() {
   };
 
   const handleAddReview = (e) => {
+    e.preventDefault();
     const review = {
       book:singleBook._id,
       text:e.target.review.value,
-      userId:user_id,
+      userId: user._id,
     }
-    fetch ('http://localhost:8000/api/reviews/new', {method:"POST", headers:{"Content-Type":"application/json"},body:JSON.stringify(review)})
+    const token = localStorage.getItem("token");
+    fetch ('http://localhost:8000/api/reviews/new', {method:"POST", headers:{"Content-Type": "application/json", "token": `${token}`},body:JSON.stringify(review)})
     .then(res => res.json())
     .then(res => {
       if (res.error) {
@@ -54,7 +56,7 @@ function OneBook() {
     .catch(err => console.log(err))
 
   };
-console.log(reviews);
+
   return (
     <>
       <div>
@@ -82,7 +84,7 @@ console.log(reviews);
           placeholder="Write your review here"
 
           />
-          <button></button>
+          <button>submit</button>
 
         </form>
         <div>
