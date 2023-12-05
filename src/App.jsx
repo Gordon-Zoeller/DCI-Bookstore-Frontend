@@ -1,12 +1,13 @@
-import "./App.css";
-import Cart from "./components/pages/Cart";
-import HomePage from "./components/pages/Home";
+import './App.css';
+import Header from './components/header/Header';
+import Main from './components/main/Main';
+
 
 function App() {
   return (
     <>
-      <Cart />
-      <HomePage />
+      <Header />
+      <Main />
     </>
   );
 }
