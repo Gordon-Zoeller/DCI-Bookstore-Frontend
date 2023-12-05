@@ -29,7 +29,7 @@ function OneBook() {
       }
     })
     .catch(err => console.log(err))
-  },[reviews])
+  },[])
   
   
   const handleAddToCart = () => {
@@ -54,7 +54,7 @@ function OneBook() {
     .catch(err => console.log(err))
 
   };
-
+console.log(reviews);
   return (
     <>
       <div>
@@ -87,14 +87,15 @@ function OneBook() {
         </form>
         <div>
           {
-            reviews?reviews.map(review=>{
+            reviews && reviews.map(review=>{
               return(
                 <div key={review._id}>
-                  <h3>{review.firstName}</h3>
+                  <h3>{review.userId.firstName}</h3>
                   <p>{review.text}</p>
                 </div>
               )
             })
+
           }
         </div>
         
