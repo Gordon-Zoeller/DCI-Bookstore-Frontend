@@ -1,0 +1,20 @@
+.signUp-login-form {
+  width: 500px;
+}
+
+.signUp-login-form p {
+  font-size: 14px;
+  color: rgb(192, 11, 11);
+  width: 500px;
+}
+
+.signUp-login-form div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+.signUp-login-form label span {
+  color: rgb(192, 11, 11);
+}

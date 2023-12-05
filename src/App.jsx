@@ -10,7 +10,6 @@ function App() {
       <Main />
       <Header/>
       <Main/>
-      <Books/>
     </>
   );
 }
