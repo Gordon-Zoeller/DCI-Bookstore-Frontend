@@ -8,9 +8,8 @@ function App() {
     <>
       <Header/>
       <Main/>
-      <Books/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

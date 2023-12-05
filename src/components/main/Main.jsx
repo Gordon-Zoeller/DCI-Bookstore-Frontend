@@ -1,4 +1,5 @@
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
+import Register from '../pages/register/Register';
 
 function Main() {
     return (
@@ -8,7 +9,7 @@ function Main() {
                     <Route path="/"/>
                     <Route path="/books"/>
                     <Route path="/books/:search"/>
-                    <Route path="/register"/>
+                    <Route path="/register" element={<Register />}/>
                     <Route path="/login"/>
                     <Route path="/profile"/>
                     <Route path="/cart"/>
