@@ -7,6 +7,7 @@ function Main() {
                 <Routes>
                     <Route path="/"/>
                     <Route path="/books"/>
+                    <Route path="/books/:search"/>
                     <Route path="/register"/>
                     <Route path="/login"/>
                     <Route path="/profile"/>
