@@ -9,8 +9,8 @@ function Main() {
                     <Route path="/"/>
                     <Route path="/books"/>
                     <Route path="/books/:search"/>
+                    <Route path='/login' element={<Login />} />
                     <Route path="/register" element={<Register />}/>
-                    <Route path="/login"/>
                     <Route path="/profile"/>
                     <Route path="/cart"/>
                     <Route path="*"/>
