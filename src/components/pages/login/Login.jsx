@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { MyContext } from '../../../context/CreateContext';
 import { useNavigate } from 'react-router-dom';
-//import '../register/form.css';
+import '../register/form.css';
 
 export default function Login() {
   const { setUser } = useContext(MyContext);
