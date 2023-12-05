@@ -4,6 +4,7 @@ import { MyContext } from './CreateContext';
 export default function Container({ children }) {
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState([]);
+  const [singleBook, setSingleBook] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [orders, setOrders] = useState([]);
   const [cart, setCart] = useState([]);
@@ -35,6 +36,8 @@ export default function Container({ children }) {
         setUser,
         books,
         setBooks,
+        singleBook,
+        setSingleBook,
         reviews,
         setReviews,
         orders,
