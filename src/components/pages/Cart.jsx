@@ -16,7 +16,7 @@ export default function Cart() {
   }, [cart]);
 
   const removeFromCart = (itemToRemove) => {
-    const updatedCart = cart.filter((item) => item.id !== itemToRemove.id);
+    const updatedCart = cart.filter((item) => item._id !== itemToRemove._id);
     setCart(updatedCart);
   };
 
@@ -29,7 +29,7 @@ export default function Cart() {
       <h2>Cart</h2>
       <ul>
         {cart.map((item) => (
-          <li key={item.id}>
+          <li key={item._id}>
             {item.name} - ${item.price}
             <button onClick={() => removeFromCart(item)}>Remove</button>
           </li>
