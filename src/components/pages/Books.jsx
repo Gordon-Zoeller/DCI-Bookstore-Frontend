@@ -13,6 +13,7 @@ function Books() {
       })
       .catch((err) => console.log(err));
   }, []);
+
   const searchBook = (e) => {
     e.preventDefault();
     if (e.target.search.value !== '') {
@@ -45,6 +46,10 @@ function Books() {
                 <h3>
                   {book.author.firstName} {book.author.lastName}
                 </h3>
+                <div className='book-img-container'>
+                  <img src={book.thumbnail} alt='book cover' />
+                </div>
+
                 <h4>{book.year}</h4>
                 <h4>{book.publisher}</h4>
                 <h4>${book.price}</h4>
