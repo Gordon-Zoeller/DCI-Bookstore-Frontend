@@ -6,24 +6,31 @@ function OneBook() {
   const { singleBook, setSingleBook, setCart, reviews, setReviews, user } =
     useContext(MyContext);
 
-    useEffect(() => {
-      const singleBookFromLocalStorage = localStorage.getItem("singleBook");
-    if(singleBookFromLocalStorage) {
-      fetch(`http://localhost:8000/api/books/bookbyid/${singleBookFromLocalStorage}`)
-      .then(res => res.json())
-      .then(res => {setSingleBook(res.data); console.log("hello world")})
-      .catch(err => console.log(err));
-  
-      fetch(`http://localhost:8000/api/reviews/of-one-book/${singleBookFromLocalStorage}`)
-                      .then((res) => res.json())
-                      .then(res => {
-                        if (res.success) {
-                          setReviews(res.data);
-                        }
-                      })
-                      .catch(err => console.log(err))
+  useEffect(() => {
+    const singleBookFromLocalStorage = localStorage.getItem('singleBook');
+    if (singleBookFromLocalStorage) {
+      fetch(
+        `http://localhost:8000/api/books/bookbyid/${singleBookFromLocalStorage}`
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          setSingleBook(res.data);
+          console.log('hello world');
+        })
+        .catch((err) => console.log(err));
+
+      fetch(
+        `http://localhost:8000/api/reviews/of-one-book/${singleBookFromLocalStorage}`
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.success) {
+            setReviews(res.data);
+          }
+        })
+        .catch((err) => console.log(err));
     }
-    }, []);
+  }, []);
 
   const handleAddToCart = () => {
     setCart((prev) => [...prev, singleBook]);
@@ -53,21 +60,21 @@ function OneBook() {
       })
       .catch((err) => console.log(err));
   };
-  console.log(singleBook)
+  console.log(singleBook);
   return (
     <>
-      <div>
-        <h3>{singleBook.title}</h3>
-        <h2>
+      <div className='single-book-container'>
+        <h3 className='book-title'>{singleBook.title}</h3>
+        <h3>
           {singleBook?.author?.firstName} {singleBook?.author?.lastName}
-  </h2>
+        </h3>
         <div className='book-img-container'>
           <img src={singleBook.thumbnail} alt='book cover' />
         </div>
-        <h2>{singleBook.year}</h2>
-        <h2>{singleBook.price}</h2>
-        <h2>{singleBook.publisher}</h2>
-        <h2>{singleBook.ISBN}</h2>
+        <h4>{singleBook.year}</h4>
+        <h4>{singleBook.price}</h4>
+        <h4>{singleBook.publisher}</h4>
+        <h4>{singleBook.ISBN}</h4>
         <div>
           <button onClick={handleAddToCart}>Add to Cart</button>
         </div>
@@ -96,4 +103,6 @@ function OneBook() {
 }
 
 export default OneBook;
-{/*<h3>{review.userId.firstName}</h3>*/}
+{
+  /*<h3>{review.userId.firstName}</h3>*/
+}
