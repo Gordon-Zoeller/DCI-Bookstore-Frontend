@@ -22,9 +22,9 @@ function Books() {
         .then((res) => {
           if (res.success) {
             setSingleBook(res.data);
-            console.log(res.data)
-            localStorage.setItem("singleBook", res.data[0]._id);
-            navigate(`/books/${e.target.search.value}`)
+            console.log(res.data);
+            localStorage.setItem('singleBook', res.data[0]._id);
+            navigate(`/books/${e.target.search.value}`);
             //e.target.search.value = '';
           }
         })
@@ -39,12 +39,12 @@ function Books() {
         <input type='text' name='search' id='search' />
         <button type='submit'>search</button>
       </form>
-      <div>
+      <div className='books-container'>
         {books.map((book) => {
           return (
             <>
-              <div key={book._id}>
-                <h3>{book.title}</h3>
+              <div key={book._id} className='single-book-container'>
+                <h3 className='book-title'>{book.title}</h3>
                 <h3>
                   {book.author.firstName} {book.author.lastName}
                 </h3>
@@ -58,11 +58,11 @@ function Books() {
                 <button
                   onClick={() => {
                     setSingleBook(book);
-                    localStorage.setItem("singleBook", book._id);
-                    let bookTitle = book.title.split()
-                    
-                    let joinedBookTitle = bookTitle.join()
-                    console.log(joinedBookTitle)
+                    localStorage.setItem('singleBook', book._id);
+                    let bookTitle = book.title.split();
+
+                    let joinedBookTitle = bookTitle.join();
+                    console.log(joinedBookTitle);
                     navigate(`/books/${joinedBookTitle}`);
                   }}
                 >
