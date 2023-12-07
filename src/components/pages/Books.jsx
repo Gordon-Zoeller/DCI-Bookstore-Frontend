@@ -22,13 +22,15 @@ function Books() {
         .then((res) => {
           if (res.success) {
             setSingleBook(res.data);
-            navigate(`/books/${e.target.search.value}`);
-            e.target.search.value = '';
+            console.log(res.data)
+            localStorage.setItem("singleBook", res.data[0]._id);
+            navigate(`/books/${e.target.search.value}`)
+            //e.target.search.value = '';
           }
         })
         .catch((err) => console.log(err));
     }
-    e.target.search.value = '';
+    //e.target.search.value = '';
   };
   return (
     <>
@@ -56,7 +58,12 @@ function Books() {
                 <button
                   onClick={() => {
                     setSingleBook(book);
-                    navigate(`/books/${book.title}`);
+                    localStorage.setItem("singleBook", book._id);
+                    let bookTitle = book.title.split()
+                    
+                    let joinedBookTitle = bookTitle.join()
+                    console.log(joinedBookTitle)
+                    navigate(`/books/${joinedBookTitle}`);
                   }}
                 >
                   <NavLink>read reviews</NavLink>
