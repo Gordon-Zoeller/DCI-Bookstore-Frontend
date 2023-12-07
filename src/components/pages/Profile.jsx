@@ -1,15 +1,15 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { MyContext } from "../../../context/CreateContext";
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { MyContext } from '../../context/CreateContext';
 
 export default function Profile() {
   const { user, setUser } = useContext(MyContext);
   const [updateMode, setUpdateMode] = useState(false);
 
   const [updatedUser, setUpdatedUser] = useState({
-    firstName: user?.firstName || "",
-    lastName: user?.lastName || "",
-    email: user?.email || "",
+    firstName: user?.firstName || '',
+    lastName: user?.lastName || '',
+    email: user?.email || '',
   });
   const navigate = useNavigate();
 
@@ -18,9 +18,11 @@ export default function Profile() {
   };
 
   const handleSave = () => {
-    fetch(`http://localhost:8000/api/update`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
+    const token = localStorage.getItem('token');
+
+    fetch(`http://localhost:8000/api/users/update/${user._id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json', token: `${token}` },
       body: JSON.stringify({
         firstName: updatedUser.firstName,
         lastName: updatedUser.lastName,
@@ -31,13 +33,13 @@ export default function Profile() {
       .then((data) => {
         if (data.success) {
           setUser(updatedUser);
-          navigate("/");
+          navigate('/');
         } else {
-          console.error("Error updating user:", data.message);
+          console.error('Error updating user:', data.message);
         }
         setUpdateMode(false);
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => console.error('Error:', error));
   };
 
   const handleChange = (e) => {
@@ -45,7 +47,7 @@ export default function Profile() {
   };
 
   if (!user) return <div>Loading...</div>;
-
+  console.log(updateMode);
   return (
     <div>
       <h1>Profile Page</h1>
@@ -59,20 +61,20 @@ export default function Profile() {
       ) : (
         <div>
           <input
-            type="text"
-            name="firstName"
+            type='text'
+            name='firstName'
             value={updatedUser.firstName}
             onChange={handleChange}
           />
           <input
-            type="text"
-            name="lastName"
+            type='text'
+            name='lastName'
             value={updatedUser.lastName}
             onChange={handleChange}
           />
           <input
-            type="email"
-            name="email"
+            type='email'
+            name='email'
             value={updatedUser.email}
             onChange={handleChange}
           />
