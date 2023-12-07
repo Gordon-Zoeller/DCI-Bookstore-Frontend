@@ -3,8 +3,9 @@
 }
 
 .signUp-login-form p {
-  font-size: 14px;
-  color: rgb(192, 11, 11);
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  color: rgb(114, 6, 6);
   width: 500px;
 }
 
