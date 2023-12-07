@@ -46,7 +46,7 @@ function Books() {
               <div key={book._id}>
                 <h3>{book.title}</h3>
                 <h3>
-                  {book.firstName} {book.lastName}
+                  {book.author.firstName} {book.author.lastName}
                 </h3>
                 <div className='book-img-container'>
                   <img src={book.thumbnail} alt='book cover' />
