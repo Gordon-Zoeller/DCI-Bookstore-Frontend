@@ -1,6 +1,6 @@
 a {
   text-decoration: none;
-  color: #16462c;
+  color: black;
 }
 body {
   background-color: #9bc3a4;
@@ -45,6 +45,20 @@ header ul {
 .book-img-container img {
   width: 100%;
 }
+
+/* PROFILE */
+.profile-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.edit-container {
+  border-bottom: 1px solid black;
+  padding-bottom: 35px;
+}
+
 /* FOOTER */
 footer {
   display: flex;
